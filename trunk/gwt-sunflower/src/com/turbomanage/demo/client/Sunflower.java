@@ -6,6 +6,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.gen2.client.IntegerSlider;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Grid;
@@ -46,6 +47,7 @@ public class Sunflower extends Composite implements EntryPoint {
   private IntegerSlider numSeedsSlider = new IntegerSlider(0,maxSeeds);
   private int yc = maxD/2;
   private int xc = maxD/2;
+  private AbsolutePanel absolutePanel;
 
   public void onModuleLoad() {
     RootPanel.get("gwt").add(new Sunflower());
@@ -88,7 +90,10 @@ public class Sunflower extends Composite implements EntryPoint {
     grid.setWidget(0, 2, new Image("phi.png"));
     vPanel.add(numSeedsSlider);
     vPanel.add(grid);
-    vPanel.add(canvas);
+    absolutePanel = new AbsolutePanel();
+    absolutePanel.add(canvas);
+    vPanel.add(absolutePanel);
+    vPanel.add(new Anchor("Blog post", "http://turbomanage.wordpress.com/2011/06/29/friday-fun-with-gwt/"));
     vPanel.add(new Anchor("Source code", "http://code.google.com/p/gwt-sunflower/"));
   }
 
